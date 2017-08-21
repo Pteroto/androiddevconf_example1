@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">accessibilityexample1</string>
+    <string name="accessibility_service_label">Watch for study</string>
+    <string name="accessibility_service_description">Activate to help study</string>
+    <string name="button_accessibility">Accessibility Settings</string>
+</resources>
