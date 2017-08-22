@@ -1,13 +1,9 @@
 package br.com.gustavomonteiro.accessibilityexample1;
 
 import android.accessibilityservice.AccessibilityService;
-import android.content.Intent;
 import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
-import android.support.v7.app.AlertDialog;
-import android.util.Log;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityNodeInfo;
-import android.widget.Toast;
 
 import java.util.List;
 
@@ -23,7 +19,7 @@ public class AccessibilityServiceStudyControl extends AccessibilityService {
     @Override
     protected void onServiceConnected() {
         super.onServiceConnected();
-        performGlobalAction(GLOBAL_ACTION_HOME);
+        performGlobalAction(GLOBAL_ACTION_BACK);
     }
 
     @Override
@@ -31,15 +27,16 @@ public class AccessibilityServiceStudyControl extends AccessibilityService {
         if (!AccessibilityServiceManager.getInstance().getServiceStatus())
             return;
 
-        String url;
         AccessibilityNodeInfo source = event.getSource();
         if (source != null) {
             AccessibilityNodeInfo root = findRoot(source);
             if (root != null) {
-                AccessibilityNodeInfoCompat rootCompat = new AccessibilityNodeInfoCompat(root);
-                List<AccessibilityNodeInfoCompat> urlBarList = rootCompat.findAccessibilityNodeInfosByViewId(URL_BAR_ID);
+                AccessibilityNodeInfoCompat rootCompat =
+                        new AccessibilityNodeInfoCompat(root);
+                List<AccessibilityNodeInfoCompat> urlBarList =
+                        rootCompat.findAccessibilityNodeInfosByViewId(URL_BAR_ID);
                 if (urlBarList.size() > 0) {
-                    url = urlBarList.get(0).getText().toString();
+                    String url = urlBarList.get(0).getText().toString();
                     if (url.contains(URL_TWITCHTV)) {
                         performGlobalAction(GLOBAL_ACTION_HOME);
                     }

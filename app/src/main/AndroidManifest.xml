@@ -17,7 +17,8 @@
             </intent-filter>
         </activity>
 
-        <service android:name=".AccessibilityServiceStudyControl"
+        <service
+            android:name=".AccessibilityServiceStudyControl"
             android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE"
             android:label="@string/accessibility_service_label">
             <intent-filter>
@@ -30,7 +31,5 @@
         </service>
 
     </application>
-
-
 
 </manifest>
